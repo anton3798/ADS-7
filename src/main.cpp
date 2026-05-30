@@ -12,18 +12,18 @@ int main() {
   for (int i = 0; i < N; ++i)
     trainOn.addCar(true);
   std::cout << trainOn.getLength()
-          << " "<< trainOn.getOpCount() << std::endl;
+          << " " << trainOn.getOpCount() << std::endl;
 
   Train trainOff;
   for (int i = 0; i < N; ++i)
     trainOff.addCar(false);
   std::cout << trainOff.getLength()
-          << " "<< trainOff.getOpCount() << std::endl;
+          << " " << trainOff.getOpCount() << std::endl;
 
   Train trainRand;
   for (int i = 0; i < N; ++i)
     trainRand.addCar(std::rand() % 2 == 1);
   std::cout << trainRand.getLength()
-          << " "<< trainRand.getOpCount() << std::endl;
+          << " " << trainRand.getOpCount() << std::endl;
   return 0;
 }
