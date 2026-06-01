@@ -15,8 +15,7 @@ void Train::addCar(bool light) {
         first = newCar;
         first->next = first;
         first->prev = first;
-    }
-    else {
+    } else {
         Car* last = first->prev;
         newCar->next = first;
         newCar->prev = last;
@@ -27,6 +26,7 @@ void Train::addCar(bool light) {
 
 int Train::getLength() {
     Car* start = first;
+    bool saved = start->light;
     start->light = true;
     while (true) {
         Car* cur = start;
@@ -42,6 +42,7 @@ int Train::getLength() {
             ++countOp;
         }
         if (!start->light) {
+            start->light = saved;
             return d;
         }
     }
