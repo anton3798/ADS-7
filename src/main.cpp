@@ -26,7 +26,10 @@ int main() {
             sum_rand += t_rand.getOpCount();
         }
         int avg_rand = sum_rand / 5;
-        std::cout << n << "\t" << off_steps << "\t" << on_steps << "\t" << avg_rand << std::endl;
+        std::cout << n << "\t"
+            << off_steps << "\t"
+            << on_steps << "\t"
+            << avg_rand << std::endl;
     }
     return 0;
 }
