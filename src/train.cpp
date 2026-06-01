@@ -2,47 +2,51 @@
 #include "train.h"
 
 Train::Train() {
-  first = nullptr;
-  countOp = 0;
+    first = nullptr;
+    countOp = 0;
 }
 
 void Train::addCar(bool light) {
-    Car* newCar = new Car{light, nullptr, nullptr};
+    Car* newCar = new Car;
+    newCar->light = light;
+    newCar->next = nullptr;
+    newCar->prev = nullptr;
     if (!first) {
-      first = newCar;
-      first->next = first;
-      first->prev = first;
-    } else {
-      Car* last = first->prev;
-      newCar->next = first;
-      newCar->prev = last;
-      last->next = newCar;
-      first->prev = newCar;
-  }
+        first = newCar;
+        first->next = first;
+        first->prev = first;
+    }
+    else {
+        Car* last = first->prev;
+        newCar->next = first;
+        newCar->prev = last;
+        last->next = newCar;
+        first->prev = newCar;
+    }
 }
 
 int Train::getLength() {
-  Car* start = first;
-  start->light = true;
-  while (true) {
-    Car* cur = start;
-    int d = 0;
-      do {
-        cur = cur->next;
-        ++countOp;
-        ++d;
-      } while (!cur->light);
-      cur->light = false;
-      for (int i = 0; i < d; ++i) {
-        cur = cur->prev;
-        ++countOp;
+    Car* start = first;
+    start->light = true;
+    while (true) {
+        Car* cur = start;
+        int d = 0;
+        do {
+            cur = cur->next;
+            ++countOp;
+            ++d;
+        } while (!cur->light);
+        cur->light = false;
+        for (int i = 0; i < d; ++i) {
+            cur = cur->prev;
+            ++countOp;
         }
-      if (!start->light) {
-        return d;
+        if (!start->light) {
+            return d;
+        }
     }
-  }
 }
 
 int Train::getOpCount() {
-  return countOp;
+    return countOp;
 }
